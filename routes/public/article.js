@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt'); 
-const { User, Blog, Tag } = require('../../sequelize')
+const { Blog } = require('../../sequelize')
 
 router.get('/', async function (req, res, next) {
     try {
