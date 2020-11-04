@@ -5,7 +5,11 @@ const { User, Blog, Tag } = require('../../sequelize')
 
 router.get('/', async function (req, res, next) {
     try {
-      const project = await Tag.findAll({});
+      const size = req.query.size ? + req.query.size : 25;
+      const page = req.query.page ? (req.query.page - 1) * size : 0;
+      const project = await Tag.findAll({ limit: parseInt(size),
+        offset: parseInt(page),
+        order: [['updatedAt', 'DESC']]});
       if (project.length !== 0) {
         project.map(val=> {
             if(val.image) {
