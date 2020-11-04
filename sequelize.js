@@ -23,7 +23,6 @@ const Tag = TagModel(sequelize, Sequelize)
 
 Blog.belongsToMany(Tag, { through: BlogTag, unique: false })
 Tag.belongsToMany(Blog, { through: BlogTag, unique: false })
-Blog.belongsTo(User);
 
 // sequelize.sync({ force: true })
 //   .then(() => {
